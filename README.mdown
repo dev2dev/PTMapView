@@ -1,0 +1,35 @@
+Using PTMapView
+===================================
+
+Add files PTMapView.h and PTMapView.m into your project
+
+Put NSView on you form
+Set NSView class to PTMapView
+
+Set outlet in controller
+	IBOutlet PTMapView *mapView
+
+Import class
+	import "PTMapView.h"
+	
+Prepare view
+	mapView.dataSource = self;
+	mapView.delegate = self;
+
+	mapView.backgroundColor = [NSColor whiteColor];
+	mapView.textColor = [NSColor blackColor];
+	mapView.color = [NSColor orangeColor];
+	
+Add method for data source protocol
+	- (NSNumber *)valueForCountry:(NSString *)code {
+		return [NSNumber numberWithInt:random() % 100];
+	}
+
+	code - country code in ISA format (uppercase)
+
+Draw map
+	[mapView draw];
+	
+Enjoy!
+
+![PTMapView](http://farm3.static.flickr.com/2741/4370696428_c41fe77e4c.jpg)
