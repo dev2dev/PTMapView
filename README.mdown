@@ -4,6 +4,7 @@ Using PTMapView
 Add files PTMapView.h and PTMapView.m into your project
 
 Put NSView on you form
+
 Set NSView class to PTMapView
 
 Set outlet in controller
