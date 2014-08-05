@@ -4,6 +4,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+@protocol PTMapViewDataSource<NSObject>
+- (NSNumber *)valueForCountry:(NSString *)code;
+@end
+
 @interface PTMapView : NSView {
 	NSMutableDictionary *worldMap;
 	NSMutableDictionary *values;
@@ -11,12 +15,10 @@
 	NSColor *backgroundColor;
 	NSColor *color;
 	NSColor *textColor;
-	id delegate;
-	id dataSource;
+	id<PTMapViewDataSource> dataSource;
 }
 
-@property (nonatomic, retain) id delegate;
-@property (nonatomic, retain) id dataSource;
+@property (nonatomic, assign) id<PTMapViewDataSource> dataSource;
 @property (nonatomic, retain) NSColor *backgroundColor;
 @property (nonatomic, retain) NSColor *color;
 @property (nonatomic, retain) NSColor *textColor;
@@ -24,13 +26,4 @@
 
 - (void)draw;
 - (NSColor *)colorForValue:(float)value;
-
-@end
-
-@protocol PTMapViewDelegate
-
-@required
-
-- (NSNumber *)valueForCountry:(NSString *)code;
-
 @end
